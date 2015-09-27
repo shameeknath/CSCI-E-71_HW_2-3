@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.gildedrose.GildedRose;
+import com.gildedrose.Item;
+
 public class GildedRoseUnitTests {
 	GildedRose gr;
 	
