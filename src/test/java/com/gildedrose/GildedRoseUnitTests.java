@@ -17,7 +17,8 @@ public class GildedRoseUnitTests {
 		Item milk = new Item("Milk", 2, 15);
 		Item agedBrie = new Item("Aged Brie", 2, 48);
 		Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20);
-		Item[] items = new Item[] {sulfuras, milk, agedBrie, backstagePass}; 
+		Item conjured = new Item("Conjured Mana Cake", 1, 10);
+		Item[] items = new Item[] {sulfuras, milk, agedBrie, backstagePass, conjured}; 
 		gr = new GildedRose(items);
 	}
 	
@@ -163,5 +164,16 @@ public class GildedRoseUnitTests {
 		gr.updateQuality();
 		assertEquals(0, gr.items[3].quality);
 		assertEquals(-2, gr.items[3].sellIn);*/
+	}
+	
+	@Test
+	public void consuredItemsDecreaseTwiceAsFast() {
+		gr.updateQuality();
+		assertEquals(8, gr.items[4].quality);
+		assertEquals(0, gr.items[4].sellIn);
+		
+		gr.updateQuality();
+		assertEquals(4, gr.items[4].quality);
+		assertEquals(-1, gr.items[4].sellIn);
 	}
 }

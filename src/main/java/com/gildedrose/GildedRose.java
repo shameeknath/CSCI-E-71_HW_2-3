@@ -57,6 +57,14 @@ class GildedRose {
         		// Sulfuras
         		// do nothing, stays the same
         		
+        	} else if ( items[i].name.equals("Conjured Mana Cake") ) {
+            		// Conjured
+        		if (items[i].sellIn >= 0) {
+        			modifyQuality(items[i], -2);
+        		} else {
+        			modifyQuality(items[i], -4);	
+        		} 
+        		
         	} else {
         		// Normal
         		if (items[i].sellIn >= 0) {
@@ -64,7 +72,7 @@ class GildedRose {
         		} else {
         			modifyQuality(items[i], -2);	
         		}      	
-        	}
+        	} 
         	
         }
     }
