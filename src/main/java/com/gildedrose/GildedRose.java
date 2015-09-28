@@ -2,6 +2,10 @@ package com.gildedrose;
 
 class GildedRose {
     Item[] items;
+    
+    private static final int NORMAL_QUALITY_DECR = -1;
+    private static final int BRIE_QUALITY_INC = 1;
+    private static final int BACKSTAGE_QUALITY_INC = 1;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -20,7 +24,7 @@ class GildedRose {
     }
 
     /**
-     * Update the sellin days and update quality of all items
+     * Update the sellIn days and update quality of all items
      */
     public void updateQuality() {
     	
@@ -34,10 +38,10 @@ class GildedRose {
         	if ( items[i].name.equals("Aged Brie")) {
         		// Aged Brie
         		if (items[i].sellIn >= 0 ) {
-        			 modifyQuality(items[i], 1);
+        			 modifyQuality(items[i], BRIE_QUALITY_INC);
         			
         		} else {
-        			modifyQuality(items[i], 2);
+        			modifyQuality(items[i], BRIE_QUALITY_INC*2);
         		}
         		
         	} else if ( items[i].name.equals("Backstage passes to a TAFKAL80ETC concert") ) {
@@ -46,11 +50,11 @@ class GildedRose {
         			// When sellIn has past, then quality is just zero
         			items[i].quality = 0;  
         		} else if (items[i].sellIn < 5) {
-        			modifyQuality(items[i], 3);	
+        			modifyQuality(items[i],3);	
         	    } else if (items[i].sellIn < 10 ) {
         	    	modifyQuality(items[i], 2);
         	    } else {
-        	    	modifyQuality(items[i], 1);	
+        	    	modifyQuality(items[i], BACKSTAGE_QUALITY_INC );	
         	    }		
         		
         	} else if ( items[i].name.equals("Sulfuras, Hand of Ragnaros") ) {
@@ -60,17 +64,17 @@ class GildedRose {
         	} else if ( items[i].name.equals("Conjured Mana Cake") ) {
             		// Conjured
         		if (items[i].sellIn >= 0) {
-        			modifyQuality(items[i], -2);
+        			modifyQuality(items[i], NORMAL_QUALITY_DECR*2);
         		} else {
-        			modifyQuality(items[i], -4);	
+        			modifyQuality(items[i], NORMAL_QUALITY_DECR*4);	
         		} 
         		
         	} else {
         		// Normal
         		if (items[i].sellIn >= 0) {
-        			modifyQuality(items[i], -1);
+        			modifyQuality(items[i], NORMAL_QUALITY_DECR);
         		} else {
-        			modifyQuality(items[i], -2);	
+        			modifyQuality(items[i], NORMAL_QUALITY_DECR*2);	
         		}      	
         	} 
         	
